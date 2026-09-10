@@ -7,6 +7,9 @@ const lapsEl = document.getElementById("laps");
 const lapsEmptyEl = document.getElementById("lapsEmpty");
 const ringSweep = document.getElementById("ringSweep");
 const watchEl = document.querySelector(".watch");
+const headsEl = document.getElementById("heads");
+
+let headCount = 0;
 
 const RING_CIRCUMFERENCE = 578;
 
@@ -40,6 +43,22 @@ function render() {
   const secondsInLoop = (elapsed / 1000) % 60;
   const offset = RING_CIRCUMFERENCE - (secondsInLoop / 60) * RING_CIRCUMFERENCE;
   ringSweep.style.strokeDashoffset = offset;
+
+  const newHeadCount = Math.floor(elapsed / 10000);
+  if (newHeadCount !== headCount) {
+    headCount = newHeadCount;
+    renderHeads();
+  }
+}
+
+function renderHeads() {
+  headsEl.innerHTML = "";
+  for (let i = 0; i < headCount; i++) {
+    const img = document.createElement("img");
+    img.src = "img/head-gif.gif";
+    img.alt = "";
+    headsEl.appendChild(img);
+  }
 }
 
 function tick() {
@@ -78,12 +97,14 @@ function reset() {
   laps = [];
   lastLapTime = 0;
   bestLapMs = null;
+  headCount = 0;
   watchEl.dataset.running = "false";
   startPauseBtn.dataset.running = "false";
   startPauseBtn.textContent = "Iniciar";
   statusEl.textContent = "Parado";
   lapBtn.disabled = true;
   renderLaps();
+  renderHeads();
   render();
 }
 

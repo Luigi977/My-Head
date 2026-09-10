@@ -13,15 +13,18 @@
   <main class="stage">
     <p class="eyebrow">Cronômetro</p>
 
-    <div class="watch">
-      <svg class="watch__ring" viewBox="0 0 200 200" aria-hidden="true">
-        <circle class="watch__ring-track" cx="100" cy="100" r="92"></circle>
-        <circle class="watch__ring-sweep" id="ringSweep" cx="100" cy="100" r="92"></circle>
-      </svg>
-      <div class="watch__face">
-        <span class="watch__time" id="time">00:00<small>.00</small></span>
-        <span class="watch__status" id="status">Parado</span>
+    <div class="watch-row">
+      <div class="watch">
+        <svg class="watch__ring" viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="watch__ring-track" cx="100" cy="100" r="92"></circle>
+          <circle class="watch__ring-sweep" id="ringSweep" cx="100" cy="100" r="92"></circle>
+        </svg>
+        <div class="watch__face">
+          <span class="watch__time" id="time">00:00<small>.00</small></span>
+          <span class="watch__status" id="status">Parado</span>
+        </div>
       </div>
+      <div class="heads" id="heads" aria-hidden="true"></div>
     </div>
 
     <div class="controls">
